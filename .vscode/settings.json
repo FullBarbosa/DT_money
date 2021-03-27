@@ -5,7 +5,7 @@
     ".eslintcache":true,
     "public":true,
     "yarn.lock":true,
-    "package.json":true,
+    // "package.json":true,
     ".gitignore":true,
     "package-lock.json":true,
     "tsconfig.json":true

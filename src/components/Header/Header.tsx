@@ -1,13 +1,19 @@
 import logoImg from "../../assets/logo.svg";
 import { Container, Content } from "./styles";
 
-export const Header = () => {
+interface Modal {
+  onOpenNewTransactionModal: () => void;
+}
+
+export const Header = ({ onOpenNewTransactionModal }: Modal) => {
   return (
     <Container>
       <Content>
         <img src={logoImg} alt="" />
 
-        <button type="button">Nova Tranzação</button>
+        <button type="button" onClick={onOpenNewTransactionModal}>
+          Nova Tranzação
+        </button>
       </Content>
     </Container>
   );

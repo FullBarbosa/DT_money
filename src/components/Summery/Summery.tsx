@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container } from "./styled";
 
 import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import total from "../../assets/total.svg";
+import { useTransactions } from "../../hooks/useTransactionsContext";
 
 export const Summery = () => {
+  const { transactions } = useTransactions();
+  console.log(transactions);
+
+  const summry = transactions.reduce(
+    (acc, transactions) => {
+      if (transactions.type === "deposit") {
+        acc.deposits += transactions.amount;
+        acc.total += transactions.amount;
+      } else {
+        acc.withdraws += transactions.amount;
+        acc.total -= transactions.amount;
+      }
+
+      return acc;
+    },
+    {
+      deposits: 0,
+      withdraws: 0,
+      total: 0,
+    }
+  );
+
   return (
     <Container>
       <div>
@@ -14,7 +37,13 @@ export const Summery = () => {
           <img src={incomeImg} alt="" />
         </header>
 
-        <strong>R$1000,00</strong>
+        <strong>
+          {" "}
+          {Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summry.deposits)}
+        </strong>
       </div>
 
       <div>
@@ -23,7 +52,14 @@ export const Summery = () => {
           <img src={outcomeImg} alt="" />
         </header>
 
-        <strong> - R$500,00</strong>
+        <strong>
+          {" "}
+          -
+          {Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summry.withdraws)}
+        </strong>
       </div>
 
       <div className="countTotal">
@@ -32,7 +68,13 @@ export const Summery = () => {
           <img src={total} alt="imagem de sifrão" />
         </header>
 
-        <strong>R$500,00</strong>
+        <strong>
+          {" "}
+          {Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summry.total)}
+        </strong>
       </div>
     </Container>
   );

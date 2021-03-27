@@ -1,8 +1,11 @@
-import React from "react";
+import { useContext } from "react";
+import { useTransactions } from "../../hooks/useTransactionsContext";
 
 import { Container } from "./styled";
 
 export const TransetionTable = () => {
+  const { transactions } = useTransactions();
+
   return (
     <Container>
       <table>
@@ -16,17 +19,25 @@ export const TransetionTable = () => {
         </thead>
 
         <tbody>
-          <td>Desenvolvimento de website</td>
-          <td className="deposit">R$12.000</td>
-          <td>Desenvolvimento</td>
-          <td>Data</td>
-        </tbody>
+          {console.log(transactions)}
+          {transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.title}</td>
+              <td className={transaction.type}>
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(transaction.amount)}
+              </td>
 
-        <tbody>
-          <td>Desenvolvimento de website</td>
-          <td className="withdraw"> -R$12.000</td>
-          <td>Desenvolvimento</td>
-          <td>Data</td>
+              <td>{transaction.category}</td>
+              <td>
+                {Intl.DateTimeFormat("pt-BR", {}).format(
+                  new Date(transaction.createdAt)
+                )}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>
