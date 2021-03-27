@@ -29,7 +29,7 @@
   <h4 id="sobre" > <b>Projeto Desenvolvido com REACT</b>
     Projeto com finalidade de organização de gastos, onde podemos ter o controle de entrada e saida do fluxo no mês.</h4>
 
-  <img src="./assets/img/Projetinho.gif" alt="Gif">
+  <img src="./src/assets/img/Projetinho.gif" alt="Gif">
 </div>
 
 
@@ -80,7 +80,7 @@
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/FullBarbosa/Moveit.git QuizJS
+$ git clone https://github.com/FullBarbosa/DT_money.git DtMoney
 
 # Install dependencies Yarn
 $ yarn install
