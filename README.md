@@ -26,7 +26,7 @@
 
 <div>
   <h3>Sobre.</h3>
-  <h4 id="sobre" > <b>Projeto Desenvolvido com REACT</b>
+  <h4 id="sobre" > <b>Desenvolvido com REACT</b>
     Projeto com finalidade de organização de gastos, onde podemos ter o controle de entrada e saida do fluxo no mês.</h4>
 
   <img src="./src/assets/img/Projetinho.gif" alt="Gif">
